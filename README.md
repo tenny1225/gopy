@@ -4,7 +4,7 @@
 
 
 
-## go get github.com/tenny1225/gopy
+``` go get github.com/tenny1225/gopy```
 
 
 ```go
