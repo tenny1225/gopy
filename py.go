@@ -93,6 +93,14 @@ func (p *py) Func(name string, f func(call PyFunctionCall) PyValue) {
 	p.funcs[name] = f
 }
 
+func (p *py) RunFile(pyPath, call string, args []any) ([]byte, error) {
+	bs, e := os.ReadFile(pyPath)
+	if e != nil {
+		return nil, e
+	}
+	return p.Run(string(bs), call, args)
+}
+
 func (p *py) Run(code, call string, args []any) ([]byte, error) {
 	bs, _ := json.Marshal(args)
 	funcs := `
